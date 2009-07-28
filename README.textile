@@ -1,0 +1,67 @@
+h1. Twitter plugin for CakePHP
+
+This plugin allows you to post a new status on Twitter after a Model::save().
+You can choose to automatically do that on create, on update, or both.
+
+h2. 1. Installation
+
+To install, run the following command from your app/plugins folder:
+
+<pre><code>git clone git://github.com/kalt/twitter.git</code></pre>
+
+The plugin includes the Twitter DataSource for CakePHP by Alex Ciobanu, added as a git submodule. You have to update it:
+
+<pre><code>git submodule init
+git submodule update</code></pre>
+
+h2. 2. Setup
+
+h3. 2.1. Twitter account credentials
+
+Duplicate the following file:
+
+<pre><code>twitter/config/twitter.default</code></pre>
+
+and rename it to 'twitter.php'. Now open it and replace the username and password with yours.
+
+h3. 2.2. Attach to Model
+
+The plugin includes a Behavior that can be attached to any Model. The only configuration needed is when do you want to post a status on Twitter : on create, on update, or both.
+
+<pre><code>class Post extends AppModel
+{
+	var $actsAs = array('Twitter.Twitterable' => array(
+		'on' => 'create'
+	));
+}</code></pre>
+
+In this example, everytime a Post is created, a new status will be posted on your Twitter account.
+
+h3. 2.3. Create a <code>Model::twitterStatus()</code> method
+
+The Twitterable Behavior will look for a twitterStatus() method in your model. This method just have to return the status you want to post. Keep in mind that a status on Twitter is limited to 140 characters.
+
+We included a convenient method to format a status, twitterFormatStatus(). This method takes 3 arguments:
+
+* <code>$message</code>: required text of the status ;
+* <code>$url</code>: optionnal url, to the full post for example. Will be shortened (we choose http://is.gd) ;
+* <code>$ending</code>: optionnal ending string if the status is too long. Defaults to '...'.
+
+*Full example:*
+
+<pre><code>class Post extends AppModel
+{
+	var $actsAs = array('Twitter.Twitterable' => array(
+		'on' => 'create'
+	));
+	
+	function twitterStatus()
+	{
+		$title = $this->data['Post']['title'];
+		$url   = Router::url(array('controller' => 'posts', 'action' => 'view', $this->id), true);
+		
+		return $this->twitterFormatStatus($title, $url, '...');
+	}
+}</code></pre>
+
+The status will be the post's title followed by a space and the url in a shortened format.
