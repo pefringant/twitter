@@ -1,0 +1,3 @@
+[submodule "models/datasources"]
+	path = models/datasources
+	url = git://github.com/ics/twitter_datasource.git
