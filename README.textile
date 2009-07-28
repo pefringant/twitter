@@ -41,10 +41,10 @@ h3. 2.3. Create a <code>Model::twitterStatus()</code> method
 
 The Twitterable Behavior will look for a twitterStatus() method in your model. This method just have to return the status you want to post. Keep in mind that a status on Twitter is limited to 140 characters.
 
-We included a convenient method to format a status, twitterFormatStatus(). This method takes 3 arguments:
+We included a convenient method to format a status, <code>twitterFormatStatus()</code>. This method takes 3 arguments:
 
 * <code>$message</code>: required text of the status ;
-* <code>$url</code>: optionnal url, to the full post for example. Will be shortened (we choose http://is.gd) ;
+* <code>$url</code>: optionnal url, to the full post for example. Will be shortened (we choosed http://is.gd) ;
 * <code>$ending</code>: optionnal ending string if the status is too long. Defaults to '...'.
 
 *Full example:*
