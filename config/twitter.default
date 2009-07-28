@@ -1,0 +1,14 @@
+<?php
+/**
+ * Twitter config class
+ * Replace the 'username' and 'password' values by your Twitter account params.
+ */
+class TWITTER_CONFIG
+{
+	var $twitter = array(
+		'datasource' => 'twitter',
+		'username' => 'twitter_account',
+		'password' => 'twitter_password',
+	);
+}
+?>
