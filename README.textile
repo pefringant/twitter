@@ -64,4 +64,24 @@ We included a convenient method to format a status, <code>twitterFormatStatus()<
 	}
 }</code></pre>
 
-The status will be the post's title followed by a space and the url in a shortened format.
+The status will be the post's title (cut and ended by '...' if too long), followed by a space and the url in a shortened format.
+
+h2. 3. Other Twitter interactions
+
+Since we are using the Twitter DataSource, we can access various other Twitter API methods. Please read the "Bakery article about the Twitter DataSource":http://bakery.cakephp.org/articles/view/twitter-datasource to see what you can do.
+
+*Example*: we look for 'cakephp' on Twitter and display the results :
+
+<pre><code>class SomethingsController extends AppController
+{
+	var $uses = array('Something', 'Twitter.Twitter');
+	
+	function index()
+	{
+		$ds = ConnectionManager::getDataSource('twitter');
+		
+        $test = $ds->search('cakephp');
+        
+        debug($test);
+    }
+}</code></pre>
