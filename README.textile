@@ -1,7 +1,6 @@
 h1. Twitter plugin for CakePHP
 
-This plugin allows you to post a new status on Twitter after a Model::save().
-You can choose to automatically do that on create, on update, or both.
+CakePHP plugin to interact with your Twitter account (see the Twitter API for reference). For example, it allows you to post a new status on Twitter after a Model::save(), on create, update, or both.
 
 h2. 1. Installation
 
