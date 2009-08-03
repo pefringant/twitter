@@ -69,6 +69,8 @@ h2. 3. Other Twitter interactions
 
 Since we are using the Twitter DataSource, we can access various other Twitter API methods. Please read the "Bakery article about the Twitter DataSource":http://bakery.cakephp.org/articles/view/twitter-datasource to see what you can do.
 
+Note that we don't need the plugin's Behavior to access the DataSource methods, but only the plugin's Twitter model. 
+
 *Example*: we look for 'cakephp' on Twitter and display the results :
 
 <pre><code>class SomethingsController extends AppController
